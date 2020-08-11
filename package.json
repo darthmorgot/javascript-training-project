@@ -1,0 +1,23 @@
+{
+  "name": "myjavascripttraining_9",
+  "version": "1.0.0",
+  "description": "Training project, pure javascript application",
+  "main": "webpack.config.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/darthmorgot/javascript-training-project.git"
+  },
+  "keywords": [
+    "js",
+    "javascript"
+  ],
+  "author": "Master <19ch76uk@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/darthmorgot/javascript-training-project/issues"
+  },
+  "homepage": "https://github.com/darthmorgot/javascript-training-project#readme"
+}
