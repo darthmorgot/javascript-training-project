@@ -4,7 +4,9 @@
   "description": "Training project, pure javascript application",
   "main": "webpack.config.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "webpack",
+    "build": "webpack --mode production"
   },
   "repository": {
     "type": "git",
@@ -19,5 +21,10 @@
   "bugs": {
     "url": "https://github.com/darthmorgot/javascript-training-project/issues"
   },
-  "homepage": "https://github.com/darthmorgot/javascript-training-project#readme"
+  "homepage": "https://github.com/darthmorgot/javascript-training-project#readme",
+  "private": true,
+  "devDependencies": {
+    "webpack": "^4.44.1",
+    "webpack-cli": "^3.3.12"
+  }
 }
