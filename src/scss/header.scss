@@ -2,5 +2,41 @@
 @import "mixins";
 
 .header {
-  
+  position: fixed;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: $header-height;
+  margin: 0;
+  padding: 0 4px;
+
+  &__input {
+    height: 22px;
+    min-width: 1px;
+    margin: 0;
+    padding: 2px 7px;
+    font-size: 16px;
+    line-height: 20px;
+    color: #000;
+    border: 2px solid transparent;
+    border-radius: 2px;
+    outline: none;
+
+    &:hover {
+      border: 2px solid $border-color;
+    }
+
+    &:focus {
+      border: 2px solid #1a73e8;
+    }
+  }
+
+  &__buttons {
+
+  }
+
+  &__btn {
+    @include button(red);
+  }
 }
