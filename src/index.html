@@ -12,73 +12,40 @@
 </head>
 <body>
 
-  <div id="app" class="container">
+  <div id="app">
 
-    <div class="excel">
+    <div class="db">
 
-      <div class="excel__header header">
-        <input type="text" class="header__input" value="New table">
-        <div class="header__buttons">
-          <button class="header__btn">
-            <span class="material-icons">delete</span>
-          </button>
-          <button class="header__btn">
-            <span class="material-icons">exit_to_app</span>
-          </button>
+      <div class="db__header">
+        <h1>Excel dashboard</h1>
+      </div>
+
+      <div class="db__new">
+        <div class="db__view">
+          <a href="#" class="db__create">New table</a>
         </div>
       </div>
 
-      <div class="excel__toolbar toolbar">
-        <button class="toolbar__btn">
-          <span class="material-icons">format_align_left</span>
-        </button>
-        <button class="toolbar__btn">
-          <span class="material-icons">format_align_center</span>
-        </button>
-        <button class="toolbar__btn">
-          <span class="material-icons">format_align_right</span>
-        </button>
-        <button class="toolbar__btn">
-          <span class="material-icons">format_bold</span>
-        </button>
-        <button class="toolbar__btn">
-          <span class="material-icons">format_italic</span>
-        </button>
-        <button class="toolbar__btn">
-          <span class="material-icons">format_underlined</span>
-        </button>
-      </div>
+      <div class="db__table db__view list">
+        <div class="list__header">
+          <span class="list__title">Name table</span>
+          <span class="list__date">Opening date</span>
+        </div>
 
-      <div class="excel__formula formula">
-        <div class="formula__info">fx</div>
-        <div class="formula__input" contenteditable spellcheck="false"></div>
-      </div>
-
-      <div class="excel__table table">
-        <div class="table__row row">
-          <div class="row__info"></div>
-          <div class="row__data columns">
-            <div class="columns__head">A</div>
-            <div class="columns__head">B</div>
-            <div class="columns__head">C</div>
-          </div>
-        </div>
-        <div class="table__row row">
-          <div class="row__info">1</div>
-          <div class="row__data cells">
-            <div class="cell selected" contenteditable>1</div>
-            <div class="cell" contenteditable>2</div>
-            <div class="cell" contenteditable>3</div>
-          </div>
-        </div>
-        <div class="table__row row">
-          <div class="row__info">2</div>
-          <div class="row__data cells">
-            <div class="cell" contenteditable>4</div>
-            <div class="cell" contenteditable>5</div>
-            <div class="cell" contenteditable>6</div>
-          </div>
-        </div>
+        <ul class="list__table">
+          <li class="list__record">
+            <a href="#">Table 1</a>
+            <span>13.08.2020</span>
+          </li>
+          <li class="list__record">
+            <a href="#">Table 2</a>
+            <span>13.08.2020</span>
+          </li>
+          <li class="list__record">
+            <a href="#">Table 3</a>
+            <span>13.08.2020</span>
+          </li>
+        </ul>
       </div>
 
     </div>
