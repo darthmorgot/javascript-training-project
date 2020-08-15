@@ -2,7 +2,8 @@ import {$} from '@core/dom';
 
 export class Excel {
   constructor(selector, options) {
-    this.$el = document.querySelector(selector);
+    // this.$el = document.querySelector(selector);
+    this.$el = $(selector);
     this.components = options.components || [];
   }
 
@@ -21,7 +22,9 @@ export class Excel {
 
       const component = new Component($el);
 
-      $el.innerHTML = component.toHTML();
+      // $el.innerHTML = component.toHTML();
+      $el.html(component.toHTML());
+
       // $root.insertAdjacentHTML('beforeend', component.toHTML());
       $root.append($el);
     });
