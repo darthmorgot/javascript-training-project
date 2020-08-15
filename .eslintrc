@@ -9,7 +9,8 @@
     "comma-dangle": "off",
     "eol-last": "off",
     "arrow-parens": ["error", "as-needed"],
-    "require-jsdoc": "off"
+    "require-jsdoc": "off",
+    "operator-linebreak": "off"
   },
   "extends": ["eslint:recommended", "google"]
 }
