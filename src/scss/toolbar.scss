@@ -11,4 +11,6 @@
   padding: 0 4px;
   border-top: 1px solid $border-color;
   border-bottom: 1px solid $border-color;
+  background-color: $bg-color;
+  z-index: 10;
 }
