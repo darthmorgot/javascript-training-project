@@ -33,8 +33,8 @@ class Dom {
     return this;
   }
 
-  on() {
-
+  on(evtType, callback) {
+    this.$el.addEventListener(evtType, callback);
   }
 }
 
