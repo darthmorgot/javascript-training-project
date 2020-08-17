@@ -19,7 +19,7 @@ export class DomListener {
 
       if (!this[method]) {
         throw new Error(
-            `Method ${method} is not implemented in ${this.name} component`
+          `Method ${method} is not implemented in ${this.name} component`
         );
       }
 
