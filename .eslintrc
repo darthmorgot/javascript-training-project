@@ -10,7 +10,8 @@
     "eol-last": "off",
     "arrow-parens": ["error", "as-needed"],
     "require-jsdoc": "off",
-    "operator-linebreak": "off"
+    "operator-linebreak": "off",
+    "indent": ["error", 2, {"MemberExpression": 1}]
   },
   "extends": ["eslint:recommended", "google"]
 }
