@@ -4,7 +4,7 @@ export class Formula extends ExcelComponent {
   constructor($root) {
     super($root, {
       name: 'Formula',
-      listeners: ['input']
+      listeners: ['input', 'click']
     });
   }
 
@@ -18,6 +18,11 @@ export class Formula extends ExcelComponent {
   }
 
   onInput(evt) {
-    console.log('Formula: onInput ', evt);
+    console.log(this.$root);
+    console.log('Formula: onInput ', evt.target.textContent.trim());
+  }
+
+  onClick() {
+
   }
 }
