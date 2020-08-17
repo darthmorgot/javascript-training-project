@@ -23,13 +23,19 @@ export class DomListener {
         );
       }
 
+      this[method] = this.[method].bind(this);
       // тоже самое, что и addEventListener
-      this.$root.on(listener, this[method].bind(this));
+      this.$root.on(listener, this[method]);
     });
   }
 
   removeDOMListeners() {
+    this.listeners.forEach(listener => {
+      const method = getMethodName(listener);
 
+      // тоже самое, что и removeEventListener
+      this.$root.off(listener, this[method]);
+    });
   }
 }
 
