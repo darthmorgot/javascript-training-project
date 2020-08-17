@@ -8,8 +8,10 @@
   "rules": {
     "comma-dangle": "off",
     "eol-last": "off",
-    "arrow-parens": [2, "as-needed", {"requireForBlockBody": true}],
-    "require-jsdoc": "off"
+    "arrow-parens": ["error", "as-needed"],
+    "require-jsdoc": "off",
+    "operator-linebreak": "off",
+    "indent": ["error", 2, {"MemberExpression": 1}]
   },
   "extends": ["eslint:recommended", "google"]
 }

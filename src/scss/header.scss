@@ -10,6 +10,8 @@
   height: $header-height;
   margin: 0;
   padding: 0 4px;
+  background-color: $bg-color;
+  z-index: 10;
 
   &__input {
     height: 22px;
@@ -34,9 +36,5 @@
 
   &__buttons {
 
-  }
-
-  &__btn {
-    @include button(red);
   }
 }

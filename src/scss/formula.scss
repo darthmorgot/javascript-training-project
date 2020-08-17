@@ -9,6 +9,8 @@
   display: flex;
   align-items: center;
   border-bottom: 1px solid $border-color;
+  background-color: $bg-color;
+  z-index: 10;
 
   &__info {
     min-width: $info-cell-width;
