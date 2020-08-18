@@ -23,11 +23,15 @@ export class Table extends ExcelComponent {
       // const $parent = $resizer.$el.closest('.columns__head'); // bad
       const $parent = $resizer.closest('[data-type="resizable"]');
       const coords = $parent.getCoords();
+      // console.log($parent.data.column);
 
       document.onmousemove = e => {
         const delta = e.pageX - coords.right;
         const value = coords.width + delta;
         $parent.$el.style.width = value + 'px';
+
+        document.querySelectorAll(`[data-column="${$parent.data.column}"]`)
+          .forEach(el => el.style.width = value + 'px');
       };
 
       document.onmouseup = () => {
