@@ -11,7 +11,7 @@ function toCell() {
 
 function toColumn(heading, index) {
   return `
-    <div class="columns__head">
+    <div class="columns__head" data-type="resizable">
       ${heading}
       <div class="columns__resize" data-resize="column"></div>
     </div>
