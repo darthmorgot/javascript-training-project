@@ -1,5 +1,6 @@
 import {ExcelComponent} from '@core/ExcelComponent';
 import {createTable} from '@/components/table/table.template';
+import {$} from '@core/dom';
 
 export class Table extends ExcelComponent {
   constructor($root) {
@@ -16,9 +17,22 @@ export class Table extends ExcelComponent {
   }
 
   onMousedown(evt) {
-    // console.log(evt.target.getAttribute('data-resize'));
     if (evt.target.dataset.resize) {
-      console.log('Start resizing', evt.target.dataset.resize);
+      const $resizer = $(evt.target);
+      // const $parent = $resizer.$el.parentElement; // bad bad
+      // const $parent = $resizer.$el.closest('.columns__head'); // bad
+      const $parent = $resizer.closest('[data-type="resizable"]');
+      const coords = $parent.getCoords();
+
+      document.onmousemove = e => {
+        const delta = e.pageX - coords.right;
+        const value = coords.width + delta;
+        $parent.$el.style.width = value + 'px';
+      };
+
+      document.onmouseup = () => {
+        document.onmousemove = null;
+      };
     }
   }
 }
