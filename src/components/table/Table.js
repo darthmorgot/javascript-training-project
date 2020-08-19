@@ -19,6 +19,7 @@ export class Table extends ExcelComponent {
   onMousedown(evt) {
     if (evt.target.dataset.resize) {
       const $resizer = $(evt.target);
+      const flag = $resizer.data.resize;
       // const $parent = $resizer.$el.parentElement; // bad bad
       // const $parent = $resizer.$el.closest('.columns__head'); // bad
       const $parent = $resizer.closest('[data-type="resizable"]');
@@ -31,11 +32,23 @@ export class Table extends ExcelComponent {
       let value = 0;
 
       document.onmousemove = e => {
-        delta = e.pageX - coords.right;
-        value = coords.width + delta;
-        $parent.$el.style.width = value + 'px';
+        if (flag === 'column') {
+          delta = e.pageX - coords.right;
+          value = coords.width + delta;
+          // $parent.$el.style.width = value + 'px';
+          $parent.css({
+            width: value + 'px'
+          });
 
-        cols.forEach(el => el.style.width = value + 'px');
+          cols.forEach(el => el.style.width = value + 'px');
+        } else {
+          delta = e.pageY - coords.bottom;
+          value = coords.height + delta;
+          // $parent.$el.style.height = value + 'px';
+          $parent.css({
+            height: value + 'px'
+          });
+        }
       };
 
       document.onmouseup = () => {
