@@ -19,44 +19,45 @@ export class Table extends ExcelComponent {
   onMousedown(evt) {
     if (evt.target.dataset.resize) {
       const $resizer = $(evt.target);
-      const flag = $resizer.data.resize;
+      const type = $resizer.data.resize;
       // const $parent = $resizer.$el.parentElement; // bad bad
       // const $parent = $resizer.$el.closest('.columns__head'); // bad
       const $parent = $resizer.closest('[data-type="resizable"]');
       const coords = $parent.getCoords();
       // console.log($parent.data.column);
+      const sideProp = type === 'column' ? 'bottom' : 'right';
 
-      const cols = this.$root.findAll(`[data-column="${$parent.data.column}"]`);
+      $resizer.css({opacity: 1, [sideProp]: '-2000px'});
 
       let delta = 0;
       let value = 0;
 
       document.onmousemove = e => {
-        if (flag === 'column') {
+        if (type === 'column') {
           delta = e.pageX - coords.right;
           value = coords.width + delta;
-          // $parent.$el.style.width = value + 'px';
-          $parent.css({width: value + 'px'});
-
-          cols.forEach(el => el.style.width = value + 'px');
+          $resizer.css({right: -delta + 'px'});
         } else {
           delta = e.pageY - coords.bottom;
           value = coords.height + delta;
-          // $parent.$el.style.height = value + 'px';
-          $parent.css({height: value + 'px'});
+          $resizer.css({bottom: -delta + 'px'});
         }
       };
 
       document.onmouseup = () => {
+        if (type === 'column') {
+          $parent.css({width: value + 'px'});
+          this.$root
+            .findAll(`[data-column="${$parent.data.column}"]`)
+            .forEach(el => el.style.width = value + 'px');
+        } else {
+          $parent.css({height: value + 'px'});
+        }
+
+        $resizer.css({opacity: 0, bottom: 0, right: 0});
         document.onmousemove = null;
+        document.onmouseup = null;
       };
     }
   }
 }
-
-// Scripting 317 ms  287 ms
-// Rendering 5081 ms 6444 ms
-// Painting  612 ms  895 ms
-// System    543 ms  924 ms
-// Idle      2786 ms 2268 ms
-// Total     9339 ms 10819 ms
