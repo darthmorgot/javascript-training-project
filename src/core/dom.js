@@ -56,6 +56,21 @@ class Dom {
   findAll(selector) {
     return this.$el.querySelectorAll(selector);
   }
+
+  // {
+  //    height: '30px',
+  //    width: '42px',
+  //    backgroundColor: red
+  // }
+  css(styles = {}) {
+    let test = '';
+    for (const key in styles) {
+      if ({}.hasOwnProperty.call(styles, key)) {
+        test = `${key}: ${styles[key]}`;
+      }
+    }
+    return this.$el.style.cssText = test;
+  }
 }
 
 export function $(selector) {
