@@ -24,7 +24,7 @@ function createRow(className, content, number) {
     : '';
 
   return `
-    <div class="table__row row">
+    <div class="table__row row" data-type="resizable">
       <div class="row__info">
         ${number ? number : ''}
         ${resize}
