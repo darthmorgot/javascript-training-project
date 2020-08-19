@@ -57,19 +57,16 @@ class Dom {
     return this.$el.querySelectorAll(selector);
   }
 
-  // {
-  //    height: '30px',
-  //    width: '42px',
-  //    backgroundColor: red
-  // }
   css(styles = {}) {
-    let test = '';
-    for (const key in styles) {
-      if ({}.hasOwnProperty.call(styles, key)) {
-        test = `${key}: ${styles[key]}`;
-      }
-    }
-    return this.$el.style.cssText = test;
+    // let test = '';
+    // for (const key in styles) {
+    //   if ({}.hasOwnProperty.call(styles, key)) {
+    //     test += `${key}: ${styles[key]}; `;
+    //   }
+    // }
+    // return this.$el.style.cssText = test;
+
+    Object.keys(styles).forEach(key => this.$el.style[key] = styles[key]);
   }
 }
 
