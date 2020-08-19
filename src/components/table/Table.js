@@ -36,18 +36,14 @@ export class Table extends ExcelComponent {
           delta = e.pageX - coords.right;
           value = coords.width + delta;
           // $parent.$el.style.width = value + 'px';
-          $parent.css({
-            width: value + 'px'
-          });
+          $parent.css({width: value + 'px'});
 
           cols.forEach(el => el.style.width = value + 'px');
         } else {
           delta = e.pageY - coords.bottom;
           value = coords.height + delta;
           // $parent.$el.style.height = value + 'px';
-          $parent.css({
-            height: value + 'px'
-          });
+          $parent.css({height: value + 'px'});
         }
       };
 
