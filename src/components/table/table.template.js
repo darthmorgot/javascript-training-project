@@ -19,6 +19,7 @@ function toCell(rowNum) {
     return `
       <div
         class="cell"
+        data-type="cell"
         data-column="${col}"
         data-id="${rowNum}:${col}"
         contenteditable
