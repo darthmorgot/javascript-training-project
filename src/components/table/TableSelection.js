@@ -1,6 +1,7 @@
 export class TableSelection {
   constructor() {
     this.group = [];
+    this.current = null;
   }
 
   static className = 'selected';
@@ -13,11 +14,21 @@ export class TableSelection {
   // $el instance Dom === true
   select($el) {
     this.clear();
-    this.group.push($el);
+
     $el.addClass(TableSelection.className);
+    this.group.push($el);
+    this.current = $el;
   }
 
-  selectGroup() {
+  selectMultiple($el) {
+    this.group.push($el);
+    this.group.forEach($cell => $cell.addClass(TableSelection.className));
+  }
 
+  selectGroup($group = []) {
+    this.clear();
+
+    this.group = $group;
+    this.group.forEach($el => $el.addClass(TableSelection.className));
   }
 }
