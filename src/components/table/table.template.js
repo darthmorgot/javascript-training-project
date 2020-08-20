@@ -76,14 +76,14 @@ export function createTable(rowsCount = 10) {
 
   rows.push(createRow('columns', cols));
 
-  for (let row = 1; row <= rowsCount; row++) {
+  for (let row = 0; row < rowsCount; row++) {
     cells = new Array(colsCount)
       .fill('')
       // .map((_, col) => toCell(row, col))
       .map(toCell(row))
       .join('');
 
-    rows.push(createRow(null, cells, row));
+    rows.push(createRow(null, cells, row + 1));
   }
 
   return rows.join('');
