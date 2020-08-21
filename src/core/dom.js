@@ -62,23 +62,25 @@ class Dom {
   }
 
   css(styles = {}) {
-    // let test = '';
+    // let str = '';
     // for (const key in styles) {
     //   if ({}.hasOwnProperty.call(styles, key)) {
-    //     test += `${key}: ${styles[key]}; `;
+    //     str += `${key}: ${styles[key]}; `;
     //   }
     // }
-    // return this.$el.style.cssText = test;
+    // return this.$el.style.cssText = str;
 
     Object.keys(styles).forEach(key => this.$el.style[key] = styles[key]);
   }
 
   addClass(className) {
     this.$el.classList.add(className);
+    return this;
   }
 
   removeClass(className) {
     this.$el.classList.remove(className);
+    return this;
   }
 
   id(parse) {
