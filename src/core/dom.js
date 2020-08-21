@@ -97,6 +97,15 @@ class Dom {
     this.$el.focus();
     return this;
   }
+
+  text(text) {
+    if (typeof text === 'string') {
+      this.$el.textContent = text;
+      return this;
+    }
+
+    return this.$el.textContent.trim();
+  }
 }
 
 export function $(selector) {
