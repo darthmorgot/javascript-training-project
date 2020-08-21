@@ -11,7 +11,7 @@
     "arrow-parens": ["error", "as-needed"],
     "require-jsdoc": "off",
     "operator-linebreak": "off",
-    "indent": ["error", 2, {"MemberExpression": 1}]
+    "indent": "off"
   },
   "extends": ["eslint:recommended", "google"]
 }
