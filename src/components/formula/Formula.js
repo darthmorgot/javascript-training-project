@@ -1,4 +1,5 @@
 import {ExcelComponent} from '@core/ExcelComponent';
+import {$} from '@core/dom';
 
 export class Formula extends ExcelComponent {
   constructor($root, options) {
@@ -19,7 +20,7 @@ export class Formula extends ExcelComponent {
   }
 
   onInput(evt) {
-    const text = evt.target.textContent.trim();
-    this.emitter.emit('is work', text);
+    const text = $(evt.target).text();
+    this.$emit('formula:input', text);
   }
 }
