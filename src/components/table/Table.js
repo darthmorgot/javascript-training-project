@@ -6,10 +6,11 @@ import {resizeHandler} from '@/components/table/table.resize';
 import {shouldResize, isCell, matrix, nextSelector} from './table.functions.js';
 
 export class Table extends ExcelComponent {
-  constructor($root) {
+  constructor($root, options) {
     super($root, {
       name: 'Table',
-      listeners: ['mousedown', 'keydown']
+      listeners: ['mousedown', 'keydown'],
+      ...options
     });
   }
 
@@ -28,6 +29,9 @@ export class Table extends ExcelComponent {
 
     const $cell = this.$root.find('[data-id="0:0"]');
     this.selection.select($cell);
+    this.emitter.subscribe('is work', text => {
+      this.selection.current.text(text);
+    });
   }
 
   onMousedown(evt) {
