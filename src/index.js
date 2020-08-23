@@ -13,7 +13,7 @@ import './scss/index.scss';
 // });
 
 const store = new CreateStore(rootReducer, {
-  tableTitle: 'My table excel'
+  colState: {}
 });
 
 const excel = new Excel('#app', {
