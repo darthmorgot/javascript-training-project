@@ -4,6 +4,15 @@ const CODES = {
 };
 
 const DEFAULT_WIDTH = 120;
+const DEFAULT_HEIGHT = 24;
+
+function getWidth(state, index) {
+  return (state[index] || DEFAULT_WIDTH) + 'px';
+}
+
+function getHeight(state, index) {
+  return (state[index] || DEFAULT_HEIGHT) + 'px';
+}
 
 // function toCell(row, index) {
 //   return `
@@ -18,7 +27,7 @@ const DEFAULT_WIDTH = 120;
 
 function toCell(state, rowNum) {
   return function(_, col) {
-    const width = getWidth(state.colState, col);
+    const width = getWidth(state, col);
     return `
       <div
         class="cell"
@@ -46,13 +55,19 @@ function toColumn({heading, index, width}) {
   `;
 }
 
-function createRow(className, content, number) {
+function createRow(state, className, content, number) {
   const resize = number
     ? '<div class="row__resize" data-resize="row"></div>'
     : '';
+  const height = getHeight(state, number);
 
   return `
-    <div class="table__row row" data-type="resizable">
+    <div
+      class="table__row row"
+      data-type="resizable"
+      data-row="${number}"
+      style="height: ${height}"
+    >
       <div class="row__info">
         ${number ? number : ''}
         ${resize}
@@ -66,10 +81,6 @@ function createRow(className, content, number) {
 
 function toChar(_, index) {
   return String.fromCharCode(CODES.A + index);
-}
-
-function getWidth(state, index) {
-  return (state[index] || DEFAULT_WIDTH) + 'px';
 }
 
 function withWidthFrom(state) {
@@ -100,16 +111,16 @@ export function createTable(rowsCount = 10, state = {}) {
     // })
     .join('');
 
-  rows.push(createRow('columns', cols));
+  rows.push(createRow({}, 'columns', cols));
 
   for (let row = 0; row < rowsCount; row++) {
     cells = new Array(colsCount)
       .fill('')
       // .map((_, col) => toCell(row, col))
-      .map(toCell(state, row))
+      .map(toCell(state.colState, row))
       .join('');
 
-    rows.push(createRow(null, cells, row + 1));
+    rows.push(createRow(state.rowState, null, cells, row + 1));
   }
 
   return rows.join('');
