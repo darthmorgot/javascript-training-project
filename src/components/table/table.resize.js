@@ -40,7 +40,9 @@ export function resizeHandler($root, evt) {
 
       resolve({
         value,
-        id: type === 'column' ? $parent.data.column : null
+        type,
+        // id: type === 'column' ? $parent.data.column : $parent.data.row
+        id: $parent.data[type]
       });
 
       $resizer.css({opacity: 0, bottom: 0, right: 0});
