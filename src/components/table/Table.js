@@ -5,6 +5,8 @@ import {createTable} from '@/components/table/table.template';
 import {resizeHandler} from '@/components/table/table.resize';
 import {shouldResize, isCell, matrix, nextSelector} from './table.functions.js';
 import * as actions from '@/redux/actions';
+import {defaultStyles} from '@/constants';
+
 
 export class Table extends ExcelComponent {
   constructor($root, options) {
@@ -43,12 +45,18 @@ export class Table extends ExcelComponent {
     // this.$subscribe(state => {
     //   console.log('TableState', state);
     // });
+
+    this.$on('toolbar:applyStyle', style => {
+      this.selection.applyStyle(style);
+    });
   }
 
   selectCell($cell) {
     this.selection.select($cell);
     this.$emit('table:select', $cell);
     // this.$dispatch({type: 'TEST'});
+
+    console.log($cell.getStyles(Object.keys(defaultStyles)));
   }
 
   async resizeTable(evt) {
