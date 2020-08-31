@@ -1,5 +1,4 @@
-import {defaultStyles} from '@/constants';
-import {camelToDashCase} from '@core/utils';
+import {toInlineStyle} from '@core/utils';
 
 const CODES = {
   A: 65,
@@ -33,9 +32,7 @@ function toCell(state, rowNum) {
     const width = getWidth(state.colState, col);
     const id = `${rowNum}:${col}`;
     const data = state.dataState[id];
-    const styles = Object.keys(defaultStyles)
-      .map(key => `${camelToDashCase(key)}: ${defaultStyles[key]}`)
-      .join('; ');
+    const styles = toInlineStyle(state.stylesState[id]);
 
     return `
       <div
