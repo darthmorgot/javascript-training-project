@@ -46,8 +46,12 @@ export class Table extends ExcelComponent {
     //   console.log('TableState', state);
     // });
 
-    this.$on('toolbar:applyStyle', style => {
-      this.selection.applyStyle(style);
+    this.$on('toolbar:applyStyle', value => {
+      this.selection.applyStyle(value);
+      this.$dispatch(actions.applyStyle({
+        value,
+        ids: this.selection.selectedIds
+      }));
     });
   }
 
