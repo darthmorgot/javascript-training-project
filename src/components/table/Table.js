@@ -6,7 +6,7 @@ import {resizeHandler} from '@/components/table/table.resize';
 import {shouldResize, isCell, matrix, nextSelector} from './table.functions.js';
 import * as actions from '@/redux/actions';
 import {defaultStyles} from '@/constants';
-
+import {parse} from '@core/parse';
 
 export class Table extends ExcelComponent {
   constructor($root, options) {
@@ -33,9 +33,10 @@ export class Table extends ExcelComponent {
     const $cell = this.$root.find('[data-id="0:0"]');
     this.selectCell($cell);
 
-    this.$on('formula:input', text => {
-      this.selection.current.text(text);
-      this.updateTextInStore(text);
+    this.$on('formula:input', value => {
+      // this.selection.current.text(value);
+      this.selection.current.attr('data-value', value).text(parse(value));
+      this.updateTextInStore(value);
     });
 
     this.$on('formula:done', () => {
