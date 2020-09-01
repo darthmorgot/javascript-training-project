@@ -6,7 +6,7 @@ import {Table} from '@/components/table/Table';
 // import {createStore} from '@core/createStore';
 import {CreateStore} from '@core/createStore';
 import {rootReducer} from '@/redux/rootReducer';
-import {storage} from '@core/utils';
+import {storage, debounce} from '@core/utils';
 import {initialState} from '@/redux/initialState';
 import './scss/index.scss';
 
@@ -17,9 +17,16 @@ import './scss/index.scss';
 // const store = new CreateStore(rootReducer, storage('excel-state'));
 const store = new CreateStore(rootReducer, initialState);
 
-store.subscribe(state => {
+// store.subscribe(state => {
+//   storage('excel-state', state);
+// });
+
+const stateListener = debounce(state => {
   storage('excel-state', state);
-});
+  console.log(state);
+}, 300);
+
+store.subscribe(stateListener);
 
 const excel = new Excel('#app', {
   components: [Header, Toolbar, Formula, Table],
