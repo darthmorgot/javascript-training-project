@@ -2,6 +2,7 @@ import {ExcelComponent} from '@core/ExcelComponent';
 import * as actions from '@/redux/actions';
 import {$} from '@core/dom';
 import {defaultTitle} from '@/constants';
+import {debounce} from '@core/utils';
 
 export class Header extends ExcelComponent {
   constructor($root, options) {
@@ -13,6 +14,10 @@ export class Header extends ExcelComponent {
   }
 
   static className = 'excel__header header';
+
+  prepare() {
+    this.onInput = debounce(this.onInput, 300);
+  }
 
   toHTML() {
     const title = this.store.getState().title || defaultTitle;
