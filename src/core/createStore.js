@@ -6,10 +6,11 @@ export class CreateStore {
   }
 
   subscribe(fn) {
-    this.listeners.push(fn);
+    const that = this;
+    that.listeners.push(fn);
     return {
       unsubscribe() {
-        this.listeners = this.listeners.filter(listener => listener !== fn);
+        that.listeners = that.listeners.filter(listener => listener !== fn);
       }
     };
   }
